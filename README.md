@@ -4,6 +4,7 @@ This project allows you to practice the concepts and techniques learned in this 
 
 ### Commits
 
+h
 Commit your code regularly and meaningfully. This helps both you and your team lead in case you ever need to return to old code for any number of reasons.
 
 ## Introduction
@@ -82,5 +83,6 @@ After finishing your required elements, you can push your work further. These go
 - Have fun with the styling. Make this something you'd be proud to show off!
 
 ## Submission Format
-* [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
-* [ ] Submit the link to your branch to Canvas
+
+- [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's Repo). **Please don't merge your own pull request**
+- [ ] Submit the link to your branch to Canvas
