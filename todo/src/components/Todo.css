@@ -1,0 +1,7 @@
+body {
+  background-color: grey;
+}
+
+.marked {
+  text-decoration: line-through white;
+}
