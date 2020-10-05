@@ -4,7 +4,7 @@ const Todo = ({ item, toggle }) => {
   return (
     <div
       onClick={() => toggle(item.id)}
-      className={item.complete ? "marked" : ""}
+      className={item.completed ? "marked" : ""}
     >
       <h2>+ {item.name}</h2>
     </div>

@@ -1,76 +1,32 @@
-import React from "react";
+import React, { useReducer } from "react";
 import TodoList from "./components/TodoList";
 import "./components/Todo.css";
 import TodoForm from "./components/TodoForm";
+import { reducer, startState } from "./reducers/reducer";
 
-const items = [
-  {
-    name: "Run",
-    id: 123,
-    complete: false,
-  },
-  {
-    name: "Shop",
-    id: 124,
-    complete: false,
-  },
-  {
-    name: "Work",
-    id: 1235,
-    complete: false,
-  },
-];
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, startState);
 
-class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+  const toggleComplete = (id) => {
+    dispatch({ type: "TOGGLE_COMPLETE", payload: id });
+  };
 
-  constructor() {
-    super();
-    this.state = {
-      items,
-    };
-  }
-  addItem = (e, item) => {
+  const clearing = (e) => {
     e.preventDefault();
-    const newItem = {
-      name: item,
-      id: Date.now(),
-      complete: false,
-    };
-    this.setState({
-      items: [...this.state.items, newItem],
-    });
+    dispatch({ type: "CLEAR_LIST" });
   };
 
-  toggleComplete = (id) => {
-    this.setState({
-      items: this.state.items.map((item) => {
-        return id === item.id ? { ...item, complete: !item.complete } : item;
-      }),
-    });
-  };
-
-  clearing = (e) => {
+  const addItem = (e, item) => {
     e.preventDefault();
-    this.setState({
-      items: this.state.items.filter((item) => !item.complete),
-    });
+    dispatch({ type: "ADD_ITEM", payload: item });
   };
-  render() {
-    return (
-      <div>
-        <h2>Things To-Do</h2>
-        <TodoList
-          items={this.state.items}
-          toggle={this.toggleComplete}
-          clearing={this.clearing}
-        />
-        <TodoForm addItem={this.addItem} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h2>Things To-Do</h2>
+      <TodoList items={state} toggle={toggleComplete} clearing={clearing} />
+      <TodoForm addItem={addItem} />
+    </div>
+  );
+};
 
 export default App;
